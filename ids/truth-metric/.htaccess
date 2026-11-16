@@ -8,15 +8,19 @@
 # Jkhcw9277@icloud.com
 # GitHub: Jkhcw16-arch
 
-RewriteEngine On
+RewriteEngine on
 
-# Immutable version 1.0.0
-RewriteRule ^1\.0\.0/?$ https://jkhcw16-arch.github.io/truth-metric-ontology/releases/1.0.0/Truth\_Metric\_Ontology\_v1.0.0.owl [R=302,L]
+# Immutable TMO v1.0.0
+RewriteRule ^1\.0\.0/?$ https://jkhcw16-arch.github.io/truth-metric-ontology/releases/1.0.0/Truth\_Metric\_Ontology\_v1.0.0.owl [R=303,L]
 
-RewriteRule ^1\.0\.0/ontology\.owl$ https://jkhcw16-arch.github.io/truth-metric-ontology/releases/1.0.0/Truth\_Metric\_Ontology\_v1.0.0.owl [R=302,L]
+RewriteRule ^1\.0\.0/ontology\.owl$ https://jkhcw16-arch.github.io/truth-metric-ontology/releases/1.0.0/Truth\_Metric\_Ontology\_v1.0.0.owl [R=303,L]
 
-# Current ontology
-RewriteRule ^ontology\.owl$ https://jkhcw16-arch.github.io/truth-metric-ontology/Truth\_Metric\_Ontology.owl [R=302,L]
+# Explicit current OWL document
+RewriteRule ^ontology\.owl$ https://jkhcw16-arch.github.io/truth-metric-ontology/Truth\_Metric\_Ontology.owl [R=303,L]
 
-# Namespace root
-RewriteRule ^$ https://jkhcw16-arch.github.io/truth-metric-ontology/Truth\_Metric\_Ontology.owl [R=302,L]
+# Canonical ontology IRI for RDF/XML clients
+RewriteCond %{HTTP_ACCEPT} application/rdf\+xml [NC]
+RewriteRule ^$ https://jkhcw16-arch.github.io/truth-metric-ontology/Truth\_Metric\_Ontology.owl [R=303,L]
+
+# Canonical ontology IRI for browsers and all other clients
+RewriteRule ^$ https://jkhcw16-arch.github.io/truth-metric-ontology/index.html [R=303,L]
